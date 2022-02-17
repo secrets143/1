@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<conio.h>
+#define max 25
+void insertion_sortinta[].int n); 
+
+void main()
+{
+int a[max],i,j,n;   \* variable declaration *\
+clrscr();
+printf”\n enter the total number”);
+scanf(“/n enter the input data\n”);
+for (i=0;i<n;i++)
+scanf(“%d”,&a[i]);
+insert_sort(a,n);      \* calling function *\
+printf(“\n sorted order\n”); 
+for(i=0;i<n;n++)
+printf(“\n%d”,a[i]);
+getch);
+}
+void insert_sort(int x[],int n)    \* called function *\
+{
+int i,j,temp;
+for (j=1;j<n;j++)
+{
+temp=x[j];
+for (i=j-1;i>0 &&temp <x[i],i--)
+x[i+1]=x[i];
+x[i]=temp;
+}
+}
