@@ -1,0 +1,123 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<malloc.h>
+#define MAX 20
+#define TRUE 1
+#define FALSE 0
+char pop();
+void push(char);
+struct node
+{
+char ele;
+struct node *link;
+}*s,*p,*list,*head;
+void main()
+{
+char t;
+int i,valid,n;
+char arr[50];
+clrscr();
+s=NULL;
+valid=TRUE;
+printf("\n\n 1.Expression\n 2.Exit\n\nEnter your choice:");
+scanf("%d",&n);
+switch(n)
+{
+case 1:
+printf("\nEnter your Expression :\n\n ");
+scanf("\n\t%s",arr);
+for(i=0;i<strlen(arr);i++)
+{
+if(arr[i]=='('||arr[i]=='{'||arr[i]=='[')
+push(arr[i]);
+if(arr[i]==')'||arr[i]=='}'||arr[i]==']')
+if(s==NULL)
+{
+valid=FALSE;
+printf("\n\tExcess close parenthesis\n");
+}
+else
+{
+t=pop();
+if(arr[i]==')'&&((t=='{')||(t=='[')))
+{
+valid=FALSE;
+printf("\n \t parenthesis mismatch\n");
+break;
+}
+if(arr[i]=='}'&&((t=='(')||(t=='[')))
+{
+valid=FALSE;
+printf("\n \t parenthesis mismatch\n");
+break;
+}
+if(arr[i]==']'&&((t=='}')||(t=='(')))
+{
+printf("\n \t parenthesis mismatch\n");
+break;
+}
+}
+}
+if(s!=NULL)
+{
+valid=FALSE;
+printf("\n \tExcess OPEN parenthesis \n");
+break;
+}
+if(valid==TRUE)
+{
+printf("\n \t WELL FORMED EXPRESSION\n");
+break;
+}
+else
+{
+printf("\n \t EXPRESSION IS NOT WELL FORMED\n");
+break;
+}
+case 2:
+exit(0);
+break;
+}
+getch();
+}
+void push(char x)
+{
+if(s==NULL)
+{
+s=malloc(sizeof(struct node));
+s->ele=x;
+s->link=NULL;
+head=s;
+}
+else
+{
+p=malloc(sizeof(struct node));
+p->ele=x;
+p->link=NULL;
+s->link=p;
+s=p;
+}
+}
+char pop()
+{
+char x;
+x=s->ele;
+list=head;
+if(list->link==NULL)
+{
+free(s);
+head=list;
+s=NULL;
+return(x);
+}
+else
+{
+while(list->link!=s)
+list=list->link;
+list->link=NULL;
+free(s);
+s=list;
+return(x);
+}
+}
