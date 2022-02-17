@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int arr[20], n, i, item ;
+	clrscr();
+	printf("\t\tLINEAR SEARCH\n");
+	printf("\t\t*************\n\n\n");
+	printf("\nEnter the total no. of elements : ");
+	scanf("%d", &n);
+	for(i=0; i<n; i++)
+	{
+		printf("\nEnter the element %d : ",i+1);
+		scanf("%d", &arr[i]);
+	}
+	printf("\nEnter the element to be searched : ");
+	scanf("%d", &item);
+	for(i=0; i<n; i++)
+	{
+		if(item == arr[i])
+		{
+			printf("\nElement %d found at position %d\n",item,i+1);
+			break;
+		}
+	}
+	if(i == n)
+		printf("\nItem %d not found in array\n", item);
+		getch();
+}
