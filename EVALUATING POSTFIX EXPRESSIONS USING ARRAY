@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<ctype.h>
+
+void push(int);
+int pop();
+int stack[25];
+int top=-1;
+char pfexp[25];
+
+void main()
+{
+  char ch,pfexpr[50];
+  char a,b;
+  int i=0;
+  clrscr();
+
+  printf("\nEnter an expression: \n");
+  scanf("%s",pfexpr);
+  ch=pfexpr[i];
+  while(ch!='\0')
+  {
+   	  if(isdigit(ch))
+	push(ch-48);
+    else
+	if(ch=='+'||ch=='_'||ch=='*'||ch=='/'||ch=='%')
+	{
+		b=pop();
+		a=pop();
+   switch(ch)
+   {
+    case '+':
+      push(a+b);
+      break;
+    case '-':
+      push(a-b);
+      break;
+    case '*':
+      push(a*b);
+      break;
+     }
+  }
+   i++;
+  ch=pfexpr[i];
+}
+  printf("\nResult = %d",stack[top]);
+  getch();
+}
+void push(int c)
+{
+ if(top!=24)
+ {
+ top++;
+ stack[top]=c;
+ }
+}
+int pop()
+{
+   int c;
+   if(top!=-1)
+   {
+	c=stack[top];
+   	top--;
+   }
+   return c;
+}
