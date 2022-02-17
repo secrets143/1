@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+struct stack
+{
+    int info;
+    struct stack *next;
+ }*top=NULL, *p;
+void push();
+void pop();
+void display();
+void main()
+{
+	int n;
+	clrscr();
+	while(1)
+	{
+	    printf("\n----------STACK USING LINKED LIST------------");
+	    printf("\n\n\n 1.push\n 2.pop\n 3.display\n 4.exit\n");
+	    printf("\nEnter the option: ");
+	    scanf("%d",&n);
+	    switch(n)
+	    {
+	       case 1:
+			push();
+			break;
+	       case 2:
+			pop();
+			break;
+	       case 3:
+			display();
+			break;
+	       case 4:
+			exit(0);
+	     }
+	 }
+    getch();
+}
+void push()
+{
+	  int item;
+	  printf("\nEnter item : ");
+	  scanf("%d",&item);
+	  p=(struct stack*)malloc(sizeof(struct stack));
+	  p->info=item;
+	  p->next=top;
+	  top=p;
+}
+       void pop()
+       {
+	     if(top==NULL)
+	     {
+		printf("\nstack is empty");
+		return;
+	     }
+	     printf("\nDeleted item is: %d",top->info);
+	     top=top->next;
+       }
+       void display()
+       {
+		printf("\nThe items are : \n");
+		for(p=top;p->next!=NULL;p=p->next)
+		printf("%d -> ", p->info);
+		printf("%d",p->info);
+       }
