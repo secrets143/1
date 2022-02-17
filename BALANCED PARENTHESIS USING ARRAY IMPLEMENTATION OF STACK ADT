@@ -1,0 +1,45 @@
+#include<conio.h>
+#include<stdlib.h>
+#define max 25
+void push(char);
+void pop();
+char stack[max];
+int top=-1;
+void main()
+{
+  char expr[25],ch;
+  int i=0;
+  clrscr();
+  printf("\n\t\t\t BALANCED EXPRESSION \n\n Enter an expression \n");
+  gets(expr);
+  ch=expr[0];
+  while(ch!='\0')
+  {
+	if(ch=='('||ch=='{'||ch=='[')
+		push(ch);
+	else
+		if(ch==')'||ch=='}'||ch==']'&& top!=-1)
+    			pop();
+    	i++;
+    	ch=expr[i];
+  }
+  if(ch=='\0'&&top==-1)
+	printf("\n\tBalanced parenthesis");
+  else
+	printf("\n\tUnbalanced parenthesis");
+  getch();
+}
+void push(char c)
+{
+  	if(top!=max-1)
+  	{
+  		top++;
+  		stack[top]=c;
+  	}
+}
+void pop()
+{
+  	if(top!=-1)
+	  top=top-1;
+}
+
