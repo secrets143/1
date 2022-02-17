@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void insert();
+void del();
+void display();
+struct queue
+{
+  	int info;
+  	struct queue *next;
+}*front=NULL,*rear=NULL,*temp;
+
+void main()
+{
+  int op;
+  clrscr();
+
+  while(1)
+  {
+    printf("\n 1.insert\n 2.delete\n 3.display\n 4.exit\n");
+	 printf("enter your option:");
+	 scanf("%d",&op);
+
+    switch(op)
+    {
+      	case 1:
+	insert();
+	break;
+      	case 2:
+			del();
+			break;
+      	case 3:
+			display();
+			break;
+      	case 4:
+			exit(0);
+      }
+    }
+    getch();
+}
+void insert()
+{
+ int item;
+ temp=(struct queue*)malloc(sizeof(struct queue));
+ printf("\nEnter item: ");
+ scanf("%d",&item);
+
+ temp->info=item;
+ temp->next=NULL;
+ if(front==NULL)
+	front=rear=temp;
+ else
+ {
+	rear->next=temp;
+	rear=temp;
+ }
+}
+
+void del()
+{
+  if(front==NULL)
+  {
+	printf("\nQueue is empty");
+	return;
+  }
+  printf("\nDeleted item is %d",front->info);
+  front =front->next;
+}
+
+void display()
+{
+ for(temp=front;temp->next!=NULL;temp=temp->next)
+	printf("%d -> ",temp->info);
+ printf("%d",temp->info);
+}
