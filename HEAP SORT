@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+nit i,n,t,a[50];                 \*  Variable declaration *\
+
+clrscr();
+printf(“\n\t heap sort”);
+printf(“*********”);
+printf(“\n\t enter the number of terms”);
+scanf (“%d”,&n);
+printf (“enter the value”);
+for(i=1;i<=n;i++) 
+scanf(“%d”,&a[i]);
+for (i=n/2;i>=1;i++)
+{
+t=a[a+1];
+a[i+1]=a[i];
+ a[i]=t;
+hsort(a.l,i);   \*heap sort function called * \
+}
+printf(“\n\t sorted list”);
+printf(“\n\t **********”);
+for(i=1;i<=n;i++)
+printf(“\t %d”,a[i]);
+getch();
+return;
+}
+hsort(int k [] , int i , int n)   \* heap sort function definition  *\
+{
+int j,l,s,b;
+b=0;
+s=k[i];
+l=k[i];
+j=2*i;
+cobile(j<=n) && (b==0)
+{
+if(cj<n)&&(k[j]<k[j+1]))
+j++;
+if (17 = k[i])
+b=1;
+
+else 
+k[j/2] =k[j];
+j=j*2;
+}
+k[j/2]=s;
+}
+return;
+}
