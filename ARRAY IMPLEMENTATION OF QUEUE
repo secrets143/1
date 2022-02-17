@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#define max 20
+void insert( );
+void del( );
+void display( );
+int queue[max];
+int rear= -1,front= 0;
+void main( )
+{
+  int op;
+  clrscr( );
+  while(1)
+  {
+    printf("\n Array Implementation of Queue\n");
+    printf("\n 1.Insert\n 2.Delete\n 3.Display\n 4.Exit\n");
+    printf("\nEnter your option: ");
+    scanf("%d",&op);
+    switch(op)
+    {
+      	case 1:
+			insert( );
+			break;
+      	case 2:
+			del( );
+			break;
+      	case 3:
+			display( );
+			break;
+      	case 4:
+			exit(0);
+      }
+    }
+    getch();
+}
+void insert( )
+{
+int item;
+	printf("\nEnter item : ");
+	scanf("%d",&item);
+	if(rear==max-1)
+	{
+		printf("\nQueue is full");
+		return;
+	}
+	rear++;
+	queue[rear]=item;
+}
+void del( )
+{
+	if( front>rear || front == -1 )
+	 {
+		printf("\nQueue is empty");
+		return;
+	}
+	printf("\nDeleted item is: %d", queue[front]);
+	front++;
+}
+void display( )
+{
+	int i;
+	printf("\nThe items are:\n ");
+	for(i=front;i<=rear;i++)
+		printf("  %d",queue[i]);
+}
